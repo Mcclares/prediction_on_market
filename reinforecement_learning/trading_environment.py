@@ -38,4 +38,23 @@ class TradingEnvironment(gym.Env):
         obs = self.data[self.current_step]
         return obs, reward, done
 
+    def _take_action(self, action):
+        current_price = self.data[self.current_step, 0]
+
+        if action == 1:
+            shares_bought = self.balance // current_price
+            self.balance -= shares_bought * current_price
+            self.shares_held += shares_bought
+        elif action == 2:
+            self.balance += self.shares_held * current_price
+            self.total_shares_sold += self.shares_held
+            self.shares_held = 0
+
+    def render(self, mode='human', close=False):
+        profit = self.balance + (self.shares_held * self.data[self.current_step, 0]) - self.initial_balance
+        print(f'Step: {self.current_step}')
+        print(f'Balance: {self.balance}')
+        print(f'Shares held: {self.shares_held}')
+        print(f'Total shares sold: {self.total_shares_sold}')
+        print(f'Total profit: {profit}')
 
