@@ -8,7 +8,7 @@ from src.train import create_dataset
 
 if __name__ == "__main__":
     processed_data_path = "../data/processed/processed_data.csv"
-    model_path = "../saved_models/model.keras"
+    model_path = "../saved_models/regression_model.keras"
 
     data = pd.read_csv(processed_data_path, parse_dates=['Date'], index_col='Date')
     data = data[['Close', 'SMA_50', 'SMA_200', 'RSI']]

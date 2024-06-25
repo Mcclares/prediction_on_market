@@ -33,7 +33,7 @@ def predict_next_day(data, model_path, time_step=60):
 
 if __name__ == "__main__":
     latest_data_path = "../data/latest/latest_data.csv"
-    model_path = "../saved_models/model.keras"
+    model_path = "../saved_models/regression_model.keras"
 
     data = pd.read_csv(latest_data_path, parse_dates=['Date'], index_col='Date')
     data = data[['Close', 'SMA_50', 'SMA_200', 'RSI']]

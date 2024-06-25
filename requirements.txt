@@ -5,3 +5,10 @@ tensorflow~=2.16.1
 yfinance~=0.2.40
 matplotlib~=3.9.0
 keras~=3.3.3
+
+alpha_vantage
+stable-baselines3
+schedule
+gym
+keras
+numpy
